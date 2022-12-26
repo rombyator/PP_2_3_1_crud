@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users CRUD</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<h1>Create User</h1>
+<form method="POST" action="/add" th:object="${user}" class="user-form">
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Enter name:</span>
+            <input type="text" minlength="2" maxlength="50" th:field="*{name}" name="name" class="user-form__name" />
+        </label>
+    </div>
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Enter email:</span>
+            <input type="email" th:field="*{email}" name="email" class="user-form__email"/>
+        </label>
+    </div>
+    <div class="user-form__item">
+        <label>
+            <span class="user-form__item-name">Enter age:</span>
+            <input type="number" min="0" max="150" th:field="*{age}" name="age" class="user-form__age" />
+        </label>
+    </div>
+    <div class="user-form__actions">
+        <input type="submit" value="Create" class="btn btn-action btn-large user-form__submit" />
+    </div>
+</form>
+<a href="/" class="btn btn-primary btn-large">All Users</a>
+</body>
+</html>

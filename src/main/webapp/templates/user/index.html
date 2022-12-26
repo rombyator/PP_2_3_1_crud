@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users CRUD</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <h1>Users CRUD</h1>
+
+    <table class="user-list">
+        <thead class="user-list-header">
+            <tr>
+                <th class="user-list-header__item">User Name</th>
+                <th class="user-list-header__item">Age</th>
+                <th class="user-list-header__item">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${#lists.isEmpty(users)}">
+                <td colspan="3">
+                    <h2>No users yet :(</h2>
+                </td>
+            </tr>
+            <tr th:if="${not #lists.isEmpty(users)}" th:each="user : ${users}" class="user-list__item user-info">
+                <td class="user-info__item">
+                    <a th:href="@{/{id}(id=${user.getId()})}"
+                       th:text="${user.getName()}" class="user-info__name">user</a>
+                </td>
+                <td class="user-info__item">
+                    <span th:text="${user.getAge()}" class="user-info__age">age</span>
+                </td>
+                <td class="user-info__item">
+                    <span th:text="${user.getEmail()}" class="user-info__email">email</span>
+                </td>
+                <td class="user-info__item user-info__actions">
+                    <a th:href="@{/{id}/edit(id=${user.getId()})}"
+                       class="btn btn-small btn-action user-info__edit">edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/add" class="btn btn-primary btn-large">Create user</a>
+</body>
+</html>
