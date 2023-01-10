@@ -39,6 +39,8 @@
                 <td class="user-info__item user-info__actions">
                     <a th:href="@{/{id}/edit(id=${user.getId()})}"
                        class="btn btn-small btn-action user-info__edit">edit</a>
+                    <a th:href="@{/{id}/delete(id=${user.getId()})}"
+                       class="btn btn-small btn-action user-info__delete">delete</a>
                 </td>
             </tr>
         </tbody>
